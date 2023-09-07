@@ -33,7 +33,7 @@ pipeline {
                 sh '''
                 cd myapp
                 python3 hello.py
-                python3 hello.py --number=10000
+                python3 hello.py --number=${10000}
                 '''
             }
         }
