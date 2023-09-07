@@ -23,7 +23,17 @@ pipeline {
                 sh '''
                 cd myapp
                 python3 hello.py
-                python3 hello.py --name=Brad
+                python3 hello.py --name=shalev
+                '''
+            }
+        }
+        stage('Tax') {
+            steps {
+                echo "Calculating tax of 1000.."
+                sh '''
+                cd myapp
+                python3 hello.py
+                python3 hello.py --number=10000
                 '''
             }
         }
