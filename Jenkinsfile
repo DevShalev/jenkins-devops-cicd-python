@@ -16,8 +16,16 @@ pipeline {
                 pip install -r requirements.txt
                 '''
             }
+        }stage('Test') {
+            steps {
+                echo "Testing.."
+                sh '''
+                cd myapp
+                python3 hello.py
+                python3 hello.py '--name=shalev'
+                '''
+            }
         }
-        
         stage('Tax') {
             steps {
                 echo "Calculating tax of 1000.."
