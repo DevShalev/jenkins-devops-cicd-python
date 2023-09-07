@@ -1,5 +1,5 @@
 create git repository
-docker build -t myjenkins-blueocean:2.332.3-1 .
+docker build -t jenkins-with-pipeline:2.0.0 .
 docker network create jenkins
 ## Run the Container
 ### MacOS / Linux
@@ -7,20 +7,20 @@ docker network create jenkins
 docker run --name jenkins-blueocean --restart=on-failure --detach \
   --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
-  --publish 8080:8080 --publish 50000:50000 \
+  --publish 8084:8080 --publish 50000:50000 \
   --volume jenkins-data:/var/jenkins_home \
   --volume jenkins-docker-certs:/certs/client:ro \
-  myjenkins-blueocean:2.332.3-1
+  jenkins-cicd:1.0.0
 ```
 
 ### Windows
 ```
-docker run --name jenkins-blueocean --restart=on-failure --detach `
+docker run --name jenkins-pipeline-container --restart=on-failure --detach `
   --network jenkins --env DOCKER_HOST=tcp://docker:2376 `
   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 `
   --volume jenkins-data:/var/jenkins_home `
   --volume jenkins-docker-certs:/certs/client:ro `
-  --publish 8080:8080 --publish 50000:50000 myjenkins-blueocean:2.332.3-1
+  --publish 8085:8080 --publish 50000:50000 jenkins-with-pipeline:2.0.0
 ```
 
 
